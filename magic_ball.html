@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic 8 Ball</title>
+  </header>
+  <body>
+    <p>Magic 8 Ball</p>
+    <p>Question: <span class="question-js">Please ask me...</span></p>
+    <p>Answer: <span class="answer-js">...</span></p>
+
+    <button class="handleQuestionBtn">Please ask me a Question!</button>
+  </body>
+  <script>
+    const questionEl = document.querySelector(".question-js");
+    const answerEl = document.querySelector(".answer-js");
+    const handleQuestionBtn = document.querySelector(".handleQuestionBtn");
+
+    const magic8BallQuestions = [
+      "Will I have an amazing day today?",
+      "Is someone secretly thinking about me?",
+      "Should I order pizza tonight?",
+      "Will I ever become rich and famous?",
+      "Is it a good idea to text them right now?",
+      "Will I finally start going to the gym this week?",
+      "Am I going to ace my next test?",
+      "Is my pet secretly judging me?",
+      "Will I ever find true love?",
+      "Should I take a nap or power through the day?",
+    ];
+    const answersArr = [
+      "Yes - definitely.",
+      "It is decidedly so.",
+      "Without a doubt.",
+      "Reply hazy, try again.",
+      "Ask again later.",
+      "Better not tell you now.",
+      "My sources say no.",
+      "Outlook not so good.",
+      "Very doubtful.",
+    ];
+
+    handleQuestionBtn.disabled = false;
+
+    handleQuestionBtn.addEventListener("click", (e) => {
+      const randomQuestion = randomizeArr(magic8BallQuestions);
+      const randomAnswer = randomizeArr(answersArr);
+      questionEl.textContent = magic8BallQuestions[randomQuestion];
+      handleQuestionBtn.disabled = true;
+
+      setTimeout(() => {
+        document.querySelector(".answer-js").style.transition = "all 2s";
+        answerEl.textContent = answersArr[randomAnswer];
+        handleQuestionBtn.disabled = false;
+      }, 1000);
+    });
+
+    function randomizeArr(arr) {
+      return Math.floor(Math.random() * arr.length);
+    }
+  </script>
+</html>

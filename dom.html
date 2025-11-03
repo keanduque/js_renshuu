@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .btn-youtube {
+        background-color: #000000;
+        border-radius: 50px;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        font-weight: 700;
+        margin-bottom: 35px;
+      }
+      .cost-input,
+      input {
+        padding: 10px;
+        font-size: 15px;
+      }
+      .calculate-btn {
+        background-color: green;
+        color: #ffffff;
+        padding: 12px 15px;
+        font-size: 15px;
+        cursor: pointer;
+        border: none;
+      }
+    </style>
+  </header>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="subscribe()" class="btn-youtube">Subscribe</button>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input
+      type="number"
+      name="cost_order"
+      id="cost_order"
+      placeholder="Cost of order"
+      onkeydown="handleCostKeydown()"
+    />
+    <button onclick="shippingCalculator()" class="calculate-btn">
+      Calculate
+    </button>
+    <p class="total-orders-js"></p>
+
+    <div style="display: inline-block">
+      <input
+        type="text"
+        name="input-name-js"
+        class="input-name-js"
+        onkeyup="handleInputKeyUp();"
+        placeholder="Type Text here..."
+      />
+      <span class="display-name-js">Output</span>
+    </div>
+  </body>
+  <script>
+    const displayNameEl = document.querySelector(".display-name-js");
+    const handleInputKeyUp = (e) => {
+      const inputNameEl = document.querySelector(".input-name-js");
+      displayNameEl.textContent = inputNameEl.value;
+    };
+
+    let click = true;
+    function subscribe() {
+      const btnSubscribeEl = document.querySelector(".btn-youtube");
+      btnSubscribeEl.textContent === "Subscribe"
+        ? (btnSubscribeEl.textContent = "Subscribed")
+        : (btnSubscribeEl.textContent = "Subscribe");
+    }
+
+    const handleCostKeydown = (e) => {
+      event.key === "Enter" && shippingCalculator();
+    };
+
+    function shippingCalculator() {
+      let costOrderVal = Number(
+        document.querySelector("#cost_order").value * 100
+      );
+      let totalOrders = document.querySelector(".total-orders-js");
+      let shippingFlag = "FREE shipping.";
+
+      console.log("before costOrderVal", costOrderVal);
+
+      if (costOrderVal < 40) {
+        costOrderVal = costOrderVal + 10;
+        console.log("costOrderVal", costOrderVal);
+        shippingFlag = "with +$10 shipping.";
+      }
+
+      totalOrders.textContent = `$${costOrderVal / 100} ${shippingFlag}`;
+    }
+  </script>
+</html>
