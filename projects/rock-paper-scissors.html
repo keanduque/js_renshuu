@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kean Rock Paper Scissors</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="rps-container">
+    <button onclick="history.back();" class="go-back">👈Go Back</button>
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="playGame('rock');" class="btn-rps">&#x270A;</button>
+    <button onclick="playGame('paper');" class="btn-rps">&#x270B;</button>
+    <button onclick="playGame('scissors');" class="btn-rps">&#x270C;</button>
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+    <button onclick="resetScore();" class="reset-score-btn">Reset Score</button>
+    <p class="js-reset"></p>
+    <script src="../js/script-rps.js"></script>
+  </body>
+</html>

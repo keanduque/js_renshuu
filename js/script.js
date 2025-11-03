@@ -46,3 +46,21 @@ function isSameProduct(prod1, prod2) {
   return prod1.name === prod2.name || prod1.price === prod2.price;
 }
 console.log("is same product?", isSameProduct(amazonProduct2, amazonProduct4));
+
+/*
+   let hour = new Date().getHours();
+    let name = "Kean";
+
+    if (hour >= 6 && hour <= 12) {
+      console.log(`Good morning ${name}! its ${hour}00 hrs.`);
+    } else if (hour > 13 && hour <= 17) {
+      console.log(`Good afternoon ${name}! its ${hour}00 hrs.`);
+    } else {
+      console.log(`Good evening ${name}! its ${hour}00 hrs.`);
+    }
+
+    const isHoliday = false;
+    let age = 6;
+    if ((age <= 6 || age >= 65) && !isHoliday) console.log("Discount");
+    else console.log("No Discount");
+  */
