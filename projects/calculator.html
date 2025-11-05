@@ -6,68 +6,117 @@
     <title>Kean Calculator</title>
     <link rel="stylesheet" href="../css/style.css" />
   </header>
-  <body>
+  <body class="calc-body">
     <button onclick="history.back();" class="go-back">👈Go Back</button>
-    <p>Simple Calculator</p>
-    <p class="display-calc-js"></p>
-    <p>
-      <button onclick="updateCalculation('1')">1</button>
-      <button onclick="updateCalculation('2')">2</button>
-      <button onclick="updateCalculation('3')">3</button>
-      <button onclick="updateCalculation(' + ')">+</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('4')">4</button>
-      <button onclick="updateCalculation('5')">5</button>
-      <button onclick="updateCalculation('6')">6</button>
-      <button onclick="updateCalculation(' - ')">-</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('7')">7</button>
-      <button onclick="updateCalculation('8')">8</button>
-      <button onclick="updateCalculation('9')">9</button>
-      <button onclick="updateCalculation(' * ')">*</button>
-    </p>
-    <p>
-      <button onclick="updateCalculation('0')">0</button>
-      <button onclick="updateCalculation('.')">.</button>
-      <button onclick="calculateEqual()">=</button>
-      <button onclick="updateCalculation(' / ')">/</button>
-    </p>
-    <p>
-      <button onclick="clearCalculation(); ">Clear</button>
-    </p>
+    <div class="calc-container">
+      <h3>Simple Calculator</h3>
+      <p class="display-value display-calc-js"></p>
+      <div class="calculator-inner-buttons">
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('1')"
+        >
+          1
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('2')"
+        >
+          2
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('3')"
+        >
+          3
+        </button>
+        <button
+          class="calculator-btn orange-btn"
+          onclick="updateCalculation(' + ')"
+        >
+          +
+        </button>
+
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('4')"
+        >
+          4
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('5')"
+        >
+          5
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('6')"
+        >
+          6
+        </button>
+        <button
+          class="calculator-btn orange-btn"
+          onclick="updateCalculation(' - ')"
+        >
+          -
+        </button>
+
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('7')"
+        >
+          7
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('8')"
+        >
+          8
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('9')"
+        >
+          9
+        </button>
+        <button
+          class="calculator-btn orange-btn"
+          onclick="updateCalculation(' * ')"
+        >
+          *
+        </button>
+
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('0')"
+        >
+          0
+        </button>
+        <button
+          class="calculator-btn grey-btn"
+          onclick="updateCalculation('.')"
+        >
+          .
+        </button>
+        <button class="calculator-btn grey-btn" onclick="calculateEqual()">
+          =
+        </button>
+        <button
+          class="calculator-btn orange-btn"
+          onclick="updateCalculation(' / ')"
+        >
+          /
+        </button>
+
+        <button
+          class="calculator-btn clear-btn grey-btn"
+          onclick="clearCalculation(); "
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+    <script src="../js/script-calc.js"></script>
   </body>
-  <script>
-    let calculation = localStorage.getItem("calculation") || "0";
-    const displayCalEl = document.querySelector(".display-calc-js");
-    displayCalEl.textContent = calculation;
-
-    function updateCalculation(value) {
-      calculation = calculation === "0" ? value : calculation + value;
-      displayCalEl.textContent = calculation;
-      localStorage.setItem("calculation", calculation);
-    }
-
-    function saveCalculation(calculation) {
-      localStorage.setItem("calculation", calculation);
-    }
-
-    function calculateEqual() {
-      console.log("eval", eval(calculation), "calculation", calculation);
-      calculation = eval(calculation);
-      displayCalEl.textContent = calculation;
-      saveCalculation(calculation);
-    }
-
-    function clearCalculation() {
-      calculation = "0";
-      localStorage.setItem("calculation", calculation);
-      displayCalEl.textContent = calculation;
-      saveCalculation(calculation);
-      console.log("Cleared.");
-    }
-
-    console.log("calculator");
-  </script>
 </html>

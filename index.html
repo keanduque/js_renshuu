@@ -6,11 +6,24 @@
   <style></style>
   <head>
     <title>KeanMind JS Practice</title>
+    <style>
+      .switch-btn {
+        background-color: #e1e1e1;
+        color: black;
+      }
+      .is-toggled {
+        background-color: #000000;
+        color: white;
+      }
+    </style>
   </head>
   <body>
-    <p>Welcome to KeanMind JS Practice</li>
-      <hr />
+    <p>Welcome to KeanMind JS Practice</p>
+    <hr />
     <ul>
+      <li>
+        <a href="projects/todo-list.html">To-Do List 📋</a>
+      </li>
       <li>
         <a href="projects/dom.html">DOM Manipulation 🧙</a>
       </li>
@@ -27,6 +40,43 @@
 
       <li><a href="projects/calculator.html">Calculator 🧮</a></li>
     </ul>
+    <hr />
+    <button
+      onclick="btnSwitch('.switch-js-btn-0')"
+      class="switch-btn switch-js-btn-0"
+    >
+      Gaming
+    </button>
+    <button
+      onclick="btnSwitch('.switch-js-btn-1')"
+      class="switch-btn switch-js-btn-1"
+    >
+      Music
+    </button>
+    <button
+      onclick="btnSwitch('.switch-js-btn-2')"
+      class="switch-btn switch-js-btn-2"
+    >
+      Tech
+    </button>
+
+    <script>
+      function btnSwitch(selector) {
+        const btnSwitchEl = document.querySelector(selector);
+        const isToggled = btnSwitchEl.classList.contains("is-toggled");
+
+        removePrevToggle();
+
+        !isToggled
+          ? btnSwitchEl.classList.add("is-toggled")
+          : btnSwitchEl.classList.remove("is-toggled");
+      }
+
+      function removePrevToggle() {
+        const prevBtn = document.querySelector(".is-toggled");
+        prevBtn && prevBtn.classList.remove("is-toggled");
+      }
+    </script>
+    <!-- <script src="js/script.js"></script> -->
   </body>
-  <script src="js/script.js"></script>
 </html>

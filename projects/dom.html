@@ -24,6 +24,7 @@
       Calculate
     </button>
     <p class="total-orders-js"></p>
+    <p class="error-msg-js"></p>
 
     <div style="display: inline-block">
       <input
@@ -38,6 +39,8 @@
   </body>
   <script>
     const displayNameEl = document.querySelector(".display-name-js");
+    const errorMsgEl = document.querySelector(".error-msg-js");
+
     const handleInputKeyUp = (e) => {
       const inputNameEl = document.querySelector(".input-name-js");
       displayNameEl.textContent = inputNameEl.value;
@@ -46,12 +49,17 @@
     let click = true;
     function subscribe() {
       const btnSubscribeEl = document.querySelector(".btn-youtube");
-      btnSubscribeEl.textContent === "Subscribe"
-        ? (btnSubscribeEl.textContent = "Subscribed")
-        : (btnSubscribeEl.textContent = "Subscribe");
+      if (btnSubscribeEl.textContent === "Subscribe") {
+        btnSubscribeEl.textContent = "Subscribed";
+        btnSubscribeEl.classList.add("is-subscribed");
+      } else {
+        btnSubscribeEl.textContent = "Subscribe";
+        btnSubscribeEl.classList.remove("is-subscribed");
+      }
     }
 
     const handleCostKeydown = (e) => {
+      errorMsgEl.textContent = "";
       event.key === "Enter" && shippingCalculator();
     };
 
@@ -59,18 +67,22 @@
       let costOrderVal = Number(
         document.querySelector("#cost_order").value * 100
       );
+      const cost = costOrderVal / 100;
+
       let totalOrders = document.querySelector(".total-orders-js");
       let shippingFlag = "FREE shipping.";
 
-      console.log("before costOrderVal", costOrderVal);
-
-      if (costOrderVal < 40) {
+      if (cost < 40) {
         costOrderVal = costOrderVal + 10;
         console.log("costOrderVal", costOrderVal);
         shippingFlag = "with +$10 shipping.";
       }
 
-      totalOrders.textContent = `$${costOrderVal / 100} ${shippingFlag}`;
+      if (cost < 0) {
+        errorMsgEl.textContent = "Error: cost cannot be less than $0";
+      } else {
+        totalOrders.textContent = `$${cost} ${shippingFlag}`;
+      }
     }
   </script>
 </html>

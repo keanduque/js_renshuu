@@ -1,4 +1,4 @@
-# 🧠 KeanMind Renshuu — JavaScript Practice
+# 🧠 KeanMind Renshuu — JavaScript
 
 Welcome to **KeanMind JS Practice**, a collection of mini projects and exercises to strengthen JavaScript fundamentals and DOM manipulation skills.
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </header>
+  <body>
+    <button onclick="history.back();" class="go-back">👈Go Back</button>
+    <h2>To-Do Lists</h2>
+    <p>Todo List 1 (console based)</p>
+    <input
+      type="text"
+      name="todo-one-js"
+      placeholder="Todo name"
+      class="todo-one-js"
+    />
+    <button onclick="btnAddToDoTest()">Add</button>
+    <hr />
+
+    <p>Todo List 2 (DOM)</p>
+    <input
+      type="text"
+      name="todo-two-js"
+      placeholder="Todo name"
+      class="todo-two-js"
+    />
+    <button onclick="renderTodoListTest()">Add</button>
+    <ul class="todo-two-display-list"></ul>
+    <hr />
+
+    <p>Todo List</p>
+    <div class="todo-row todo-input-row">
+      <input
+        type="text"
+        name="todo-name-js"
+        placeholder="Todo name"
+        class="todo-name-js"
+      />
+      <input type="date" name="todo-date-js" class="todo-date-js" />
+      <button onclick="btnAddToDoList()" class="add-todo-button">Add</button>
+    </div>
+    <div class="todo-list js-todo-list"></div>
+  </body>
+  <script src="../js/script-todo.js"></script>
+</html>

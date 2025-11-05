@@ -1,23 +1,57 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 button {
   border: none;
   background-color: rgb(0, 0, 0);
   border-radius: 25px;
   padding: 0.5rem;
-  color: ffffff;
+  color: #ffffff;
   cursor: pointer;
 }
+*:disabled {
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+  cursor: auto;
+}
+.go-back {
+  background-color: #958f8f;
+  border-radius: 10px;
+  color: ffffff;
+  font-size: 10px;
+}
+
+/**** Cart Qty****/
+.yellow-color {
+  background-color: yellow;
+  color: black;
+  border: solid 1px black;
+}
+.orange-color {
+  background-color: orange;
+  color: black;
+  border: solid 1px black;
+}
+.error-msg-js {
+  color: red;
+}
+
+/**** DOM *****/
 .btn-youtube {
   background-color: #000000;
   border-radius: 50px;
   color: #ffffff;
-  border: none;
   padding: 10px 15px;
   font-weight: 700;
   margin-bottom: 35px;
 }
+.is-subscribed {
+  background-color: #f0f0f0;
+  color: black;
+}
+
 .cost-input,
 input {
   padding: 10px;
@@ -29,25 +63,8 @@ input {
   padding: 12px 15px;
   font-size: 15px;
   border: none;
+  border-radius: 0;
 }
-.go-back {
-  background-color: #958f8f;
-  border-radius: 10px;
-  color: ffffff;
-  font-size: 10px;
-}
-
-.yellow-color {
-  background-color: yellow;
-  color: black;
-  border: solid 1px black;
-}
-.orange-color {
-  background-color: orange;
-  color: black;
-  border: solid 1px black;
-}
-
 /***** Rock Paper Scissors******/
 
 body.rps-container {
@@ -81,10 +98,105 @@ body.rps-container {
   font-size: 15px;
   padding: 8px 15px;
   border-radius: 0px;
-}
-.js-moves {
+  color: #000;
 }
 
 .move-icon {
   font-size: 50px;
+}
+
+/*** Calculator ****/
+h3 {
+  margin: 0;
+}
+.calc-body {
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 10px;
+}
+.calc-container {
+  max-width: 300px;
+  border: solid 1px #333;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.calculator-inner-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.calculator-btn {
+  height: 60px;
+  width: 60px;
+  border-radius: 60px;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.grey-btn {
+  background-color: #333333;
+  color: white;
+}
+.orange-btn {
+  background-color: #fea00a;
+  color: white;
+}
+
+.clear-btn {
+  font-size: 17px;
+}
+
+.display-value {
+  background-color: #202020;
+  padding: 5px 10px;
+  font-size: 26px;
+  border-radius: 10px;
+  text-align: right;
+  margin: 0;
+  color: #ffffff;
+  border: none;
+}
+
+/***** To-Do List ****/
+.todo-row {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+.todo-input-row {
+  align-items: stretch;
+}
+
+.todo-one-js,
+.todo-two-js,
+.todo-three-js,
+.todo-date-js {
+  font-size: 15px;
+  padding: 6px;
+}
+
+.add-todo-button,
+.delete-todo-button {
+  color: white;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.add-todo-button {
+  background-color: green;
+}
+.delete-todo-button {
+  background-color: darkred;
 }
