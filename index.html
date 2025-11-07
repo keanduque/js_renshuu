@@ -60,7 +60,47 @@
       Tech
     </button>
 
+    <button onclick="add()">Add Msg</button>
+    <button onclick="remove()">Remove Msg</button>
+
     <script>
+      let messages = 2;
+      let intervalID;
+      let isDisplayingNotification = false;
+
+      function displayTitle() {
+        if (document.title === "KeanMind JS Practice") {
+          document.title = `(${messages}) New Message`;
+        } else {
+          document.title = `KeanMind JS Practice`;
+        }
+      }
+      displayNotification();
+
+      function displayNotification() {
+        console.log("isDisplayingNotification", isDisplayingNotification);
+        if (isDisplayingNotification) {
+          return;
+        }
+
+        isDisplayingNotification = true;
+        intervalID = setInterval(displayTitle, 1000);
+      }
+
+      function add() {
+        messages += 1;
+        displayNotification();
+      }
+      function remove() {
+        messages -= 1;
+
+        if (messages === 0) {
+          document.title = `App`;
+          clearInterval(intervalID);
+          isDisplayingNotification = false;
+        }
+      }
+
       function btnSwitch(selector) {
         const btnSwitchEl = document.querySelector(selector);
         const isToggled = btnSwitchEl.classList.contains("is-toggled");
@@ -77,6 +117,6 @@
         prevBtn && prevBtn.classList.remove("is-toggled");
       }
     </script>
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
   </body>
 </html>

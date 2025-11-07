@@ -1,51 +1,51 @@
 //document.body.innerHTML = "Hello Kean to JS World!";
 console.log("Hello Kean to JS World!");
 
-const product = {
-  name: "shirt",
-  "delivery-time": "1 day",
-  ratings: {
-    stars: 4.5,
-    count: 87,
-  },
-  fun: function function1() {
-    console.log("This is a function inside an object");
-  },
-};
-console.log("product", product);
+// const product = {
+//   name: "shirt",
+//   "delivery-time": "1 day",
+//   ratings: {
+//     stars: 4.5,
+//     count: 87,
+//   },
+//   fun: function function1() {
+//     console.log("This is a function inside an object");
+//   },
+// };
+// console.log("product", product);
 
-const amazonProduct = {
-  name: "basketball",
-  price: 2095,
-};
-console.log("amazonProduct", amazonProduct);
+// const amazonProduct = {
+//   name: "basketball",
+//   price: 2095,
+// };
+// console.log("amazonProduct", amazonProduct);
 
-amazonProduct.price += 500;
+// amazonProduct.price += 500;
 
-amazonProduct["delivery-time"] = "3 days";
+// amazonProduct["delivery-time"] = "3 days";
 
-console.log("amazonProduct update", amazonProduct);
+// console.log("amazonProduct update", amazonProduct);
 
-const amazonProduct2 = {
-  name: "shirt",
-  price: 20,
-};
-const amazonProduct3 = amazonProduct2;
+// const amazonProduct2 = {
+//   name: "shirt",
+//   price: 20,
+// };
+// const amazonProduct3 = amazonProduct2;
 
-const amazonProduct4 = {
-  name: "shirt",
-  price: 20,
-};
+// const amazonProduct4 = {
+//   name: "shirt",
+//   price: 20,
+// };
 
-function comparePrice(product1, product2) {
-  return product1.price < product2.price ? product1 : product2;
-}
-console.log(comparePrice(amazonProduct, amazonProduct2));
+// function comparePrice(product1, product2) {
+//   return product1.price < product2.price ? product1 : product2;
+// }
+// console.log(comparePrice(amazonProduct, amazonProduct2));
 
-function isSameProduct(prod1, prod2) {
-  return prod1.name === prod2.name || prod1.price === prod2.price;
-}
-console.log("is same product?", isSameProduct(amazonProduct2, amazonProduct4));
+// function isSameProduct(prod1, prod2) {
+//   return prod1.name === prod2.name || prod1.price === prod2.price;
+// }
+// console.log("is same product?", isSameProduct(amazonProduct2, amazonProduct4));
 
 /*
   let hour = new Date().getHours();
@@ -70,57 +70,57 @@ const nums = [10, 20, 30, "apple", "banana", true, [1, 2], 66];
 nums[7] = "mango";
 // nums;
 
-function getLastValue(array) {
-  const lastIndex = array.length - 1;
-  return array[lastIndex];
-}
-console.log("lastItem is: " + getLastValue(nums));
-console.log("lastItem is: " + getLastValue(["hi", "hello", "good"]));
+// function getLastValue(array) {
+//   const lastIndex = array.length - 1;
+//   return array[lastIndex];
+// }
+// console.log("lastItem is: " + getLastValue(nums));
+// console.log("lastItem is: " + getLastValue(["hi", "hello", "good"]));
 
-function arraySwap(array) {
-  let firstIndex = 0;
-  let lastIndex = array.length - 1;
-  let tempIndex = array[0];
-  array[firstIndex] = array[lastIndex];
-  array[lastIndex] = tempIndex;
+// function arraySwap(array) {
+//   let firstIndex = 0;
+//   let lastIndex = array.length - 1;
+//   let tempIndex = array[0];
+//   array[firstIndex] = array[lastIndex];
+//   array[lastIndex] = tempIndex;
 
-  return array;
-}
-console.log("arraySwap", arraySwap(["bunny", 20, 22, 24, 25, "eagle"]));
-console.log("arraySwap", arraySwap(nums));
+//   return array;
+// }
+// console.log("arraySwap", arraySwap(["bunny", 20, 22, 24, 25, "eagle"]));
+// console.log("arraySwap", arraySwap(nums));
 
 /*
  0<1 = true : minNum=0, maxNum=1;
  0<-3 = false : minNum=-3, maxNum=1;
  -3<1 = true : minNum=-3, maxNum=5;
 */
-function minMax(nums) {
-  let minNum = 0;
-  let maxNum = 0;
-  if (nums.length !== 0) {
-    for (let i in nums) {
-      if (nums.length > 1 && minNum < nums[i]) {
-        maxNum = nums[i];
-      } else if (nums.length === 1) {
-        maxNum = nums[i];
-        minNum = nums[i];
-      } else {
-        minNum = nums[i];
-      }
-    }
-  } else {
-    minNum = null;
-    maxNum = null;
-  }
-  return {
-    minNum,
-    maxNum,
-  };
-}
-minMax([1, -3, 5]);
-minMax([-2, 3, -5, 7, 10]);
-minMax([]);
-minMax([3]);
+// function minMax(nums) {
+//   let minNum = 0;
+//   let maxNum = 0;
+//   if (nums.length !== 0) {
+//     for (let i in nums) {
+//       if (nums.length > 1 && minNum < nums[i]) {
+//         maxNum = nums[i];
+//       } else if (nums.length === 1) {
+//         maxNum = nums[i];
+//         minNum = nums[i];
+//       } else {
+//         minNum = nums[i];
+//       }
+//     }
+//   } else {
+//     minNum = null;
+//     maxNum = null;
+//   }
+//   return {
+//     minNum,
+//     maxNum,
+//   };
+// }
+// minMax([1, -3, 5]);
+// minMax([-2, 3, -5, 7, 10]);
+// minMax([]);
+// minMax([3]);
 
 // count words that has duplicate then save on the object.
 function countWords(words) {
@@ -128,7 +128,7 @@ function countWords(words) {
   let word = "";
   for (let i = 0; i < words.length; i++) {
     word = words[i];
-    console.log(word, fruitObj[word]);
+
     if (!fruitObj[word]) {
       fruitObj[word] = 1;
     } else {
@@ -138,4 +138,98 @@ function countWords(words) {
   return fruitObj;
 }
 
-countWords(["apple", "grape", "apple", "apple", "strawberry"]);
+//console.log(countWords(["apple", "grape", "apple", "apple", "strawberry"]));
+
+const strArr = ["hello", "world", "search", "good", "search"];
+const strArr2 = ["not", "found"];
+
+function findIndexFromStr(str, findStr) {
+  let findIndex = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === findStr) {
+      findIndex = i;
+      break;
+    } else {
+      findIndex = -1;
+    }
+  }
+  return findIndex;
+}
+// console.log(findIndexFromStr(strArr, "search"));
+// console.log(findIndexFromStr(strArr2, "search"));
+// console.log(findIndexFromStr(["green", "red", "blue", "red"], "red"));
+// console.log(findIndexFromStr(["green", "red", "blue", "red"], "yellow"));
+
+function removeEgg(foods) {
+  let newArr = [];
+  let eggRemove = 0;
+  let foodsCopy = foods.slice();
+  let reversedFoods = foodsCopy.reverse();
+  for (let i = 0; i < reversedFoods.length; i++) {
+    if (reversedFoods[i] === "egg" && eggRemove < 2) {
+      eggRemove++;
+      continue;
+    }
+    newArr.push(reversedFoods[i]);
+  }
+
+  return newArr.reverse();
+}
+// const foods = ["egg", "apple", "egg", "egg", "ham"];
+// console.log(removeEgg(foods));
+// console.log(foods);
+
+function FizzBuzz() {
+  for (let num = 1; num <= 20; num++) {
+    if (num % 3 === 0 && num % 5 === 0) {
+      console.log("FizzBuzz");
+    } else if (num % 3 === 0) {
+      console.log("Fizz");
+    } else if (num % 5 === 0) {
+      console.log("Buzz");
+    } else {
+      console.log(num);
+    }
+  }
+}
+//FizzBuzz();
+function findIndex(array, word) {
+  for (let i in array) {
+    if (array[i] === word) {
+      return i;
+    }
+  }
+  return -1;
+}
+// console.log("red", findIndex(["green", "red", "blue", "red"], "red"));
+// console.log("orange", findIndex(["red", "green", "green", "red"], "orange"));
+
+function unique(array) {
+  let result = [];
+  for (let i in array) {
+    const word = array[i];
+
+    if (findIndex(result, word) === -1) {
+      result.push(word);
+    }
+  }
+
+  return result;
+}
+// console.log(unique(["green", "red", "blue", "red"]));
+// console.log(unique(["red", "green", "green", "red"]));
+
+// Write code below 💖
+// 0,1,1,2,3,5,8,13,21,34
+// fibbonacci
+// let num0 = 0,
+//   num1 = 1,
+//   nextFib;
+// console.log(num0);
+// console.log(num1);
+// for (let n = 1; n <= 10; n++) {
+//   nextFib = num1 + num0;
+//   console.log(nextFib);
+//   num0 = num1;
+//   num1 = nextFib;
+// }

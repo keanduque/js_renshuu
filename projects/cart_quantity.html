@@ -10,8 +10,12 @@
     <button onclick="history.back();" class="go-back">👈Go Back</button>
     <p>Adults Plain Cotton T-shirt</p>
     <p>Price: $7.99</p>
-    <button class="yellow-color" onclick="alert('Added!');">Add to cart</button>
+    <button onclick="addToCart2()" class="add-tocart-js yellow-color">
+      Add to cart
+    </button>
+
     <button class="orange-color" onclick="handleBuyNow()">Buy now</button>
+    <p class="add-tocart-text-js"></p>
     <hr />
 
     <p>Cart Quantity</p>
@@ -29,6 +33,16 @@
     <p class="display-qty-js"></p>
   </body>
   <script>
+    const addToCartEl = document.querySelector(".add-tocart-js");
+    const addToCartTextDisplay = document.querySelector(".add-tocart-text-js");
+    let timeoutID;
+    function addToCart2() {
+      addToCartTextDisplay.innerHTML = "Added";
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        addToCartTextDisplay.innerHTML = "";
+      }, 2000);
+    }
     let quantity = JSON.parse(localStorage.getItem("quantity")) || 0;
     let maxQuantity = 10;
     const displayQtyEl = document.querySelector(".display-qty-js");

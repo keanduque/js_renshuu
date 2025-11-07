@@ -82,6 +82,10 @@ body.rps-container {
   font-size: 3rem;
   border: 3px solid white;
 }
+.auto-play-btn {
+  background-color: green;
+  color: #ffffff;
+}
 
 .js-result {
   font-size: 25px;
@@ -91,14 +95,16 @@ body.rps-container {
 .js-score {
   margin-top: 60px;
 }
-
 .reset-score-btn {
   background-color: #ffffff;
+  color: #000;
+}
+
+.command-btns {
   border: none;
   font-size: 15px;
   padding: 8px 15px;
   border-radius: 0px;
-  color: #000;
 }
 
 .move-icon {

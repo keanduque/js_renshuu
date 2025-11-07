@@ -45,6 +45,35 @@ function getResult(userSelection, computerMove) {
 
   return result;
 }
+
+let autoPlayIntervalId;
+let isAutoPlay = false;
+let autoPlayBtnEl = document.querySelector(".auto-play-btn");
+function autoPlay() {
+  let afkMove = pickComputerMove();
+  if (!isAutoPlay) {
+    autoPlayIntervalId = setInterval(function () {
+      playGame(afkMove);
+      autoPlayBtnEl.textContent = "Stop Play";
+      autoPlayBtnEl.style = "background-color:red";
+    }, 500);
+    isAutoPlay = true;
+  } else {
+    stopAutoPlay();
+  }
+}
+
+function stopAutoPlay() {
+  isAutoPlay = false;
+  if (!isAutoPlay) {
+    clearInterval(autoPlayIntervalId);
+    autoPlayBtnEl.textContent = "Auto Play";
+    autoPlayBtnEl.style = "background-color:green";
+    resultEl.textContent = "";
+    movesEl.textContent = "";
+  }
+}
+
 function playGame(userSelection) {
   const computerMove = pickComputerMove();
   const computerEmoji = convertToEmoji(computerMove);

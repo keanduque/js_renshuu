@@ -27,7 +27,8 @@ function renderTodoListTest() {
   todoTwoInputEl.value = "";
 }
 
-const todoListObj = [
+//////////////////////////////////////--- MAIN TODO------------------------------------
+const todoListObj = JSON.parse(localStorage.getItem("todo-list")) || [
   {
     name: "animals",
     dueDate: "25/11/2025",
@@ -37,6 +38,7 @@ const todoListObj = [
     dueDate: "04/11/2025",
   },
 ];
+
 renderTodoList();
 
 function btnAddToDoList() {
@@ -51,10 +53,15 @@ function btnAddToDoList() {
     return;
   }
 
-  todoListObj.push({
+  console.log(todoListObj);
+
+  const obj = {
     name,
     dueDate,
-  });
+  };
+
+  todoListObj.push(obj);
+  localStorage.setItem("todo-list", JSON.stringify(todoListObj));
 
   renderTodoList();
   todInputEl.value = "";
@@ -63,10 +70,9 @@ function btnAddToDoList() {
 
 function renderTodoList() {
   const todoListEl = document.querySelector(".js-todo-list");
-
   let html = "";
-  for (let i = 0; i < todoListObj.length; i++) {
-    let { name, dueDate } = todoListObj[i];
+  todoListObj.forEach((todo) => {
+    let { name, dueDate } = todo;
     html += `
           <div class="todo-row">
           <div>${name}</div>
@@ -75,12 +81,13 @@ function renderTodoList() {
           ${i}
           )">Delete</button>
       </div>`;
-  }
+  });
   todoListEl.innerHTML = html;
 }
 
 function deleteTodo(i) {
   todoListObj.splice(i, 1);
+  localStorage.setItem("todo-list", JSON.stringify(todoListObj));
   console.log("deleted!");
   renderTodoList();
 }
