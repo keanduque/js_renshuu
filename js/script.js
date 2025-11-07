@@ -233,3 +233,38 @@ function unique(array) {
 //   num0 = num1;
 //   num1 = nextFib;
 // }
+
+// console.log([1, -3, 5].filter((value) => value >= 0));
+
+// console.log([1, 1, 3].map((value, index) => value * 2));
+
+// console.log([1, 1, 3].map((value) => value * 2));
+
+// function countPositive(nums) {
+//   let newArr = [];
+//   nums.forEach((num) => {
+//     if (num > 0) {
+//       newArr.push(num);
+//     }
+//   });
+//   console.log(newArr.length);
+// }
+// countPositive([1, -3, 5]);
+// countPositive([-2, 3, -5, 7, 10]);
+
+const addNum = (array, num) => array.map((arr) => arr + num);
+// console.log(addNum([1, 2, 3], 2));
+// console.log(addNum([-2, -1, 0, 99], 2));
+
+// function removeEggFilter(foods) {
+//   let removeEgg = 0;
+//   return foods.filter((food) => {
+//     if (food === "egg" && removeEgg < 2) {
+//       removeEgg++;
+//       return false;
+//     }
+//     return true;
+//   });
+// }
+
+// console.log(removeEggFilter(["egg", "apple", "egg", "egg", "ham"]));

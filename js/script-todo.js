@@ -28,6 +28,12 @@ function renderTodoListTest() {
 }
 
 //////////////////////////////////////--- MAIN TODO------------------------------------
+const btnAddTodo = document.querySelector(".btn-add-todo-js");
+
+btnAddTodo.addEventListener("click", () => {
+  addToDoList();
+});
+
 const todoListObj = JSON.parse(localStorage.getItem("todo-list")) || [
   {
     name: "animals",
@@ -41,7 +47,7 @@ const todoListObj = JSON.parse(localStorage.getItem("todo-list")) || [
 
 renderTodoList();
 
-function btnAddToDoList() {
+function addToDoList() {
   let todInputEl = document.querySelector(".todo-name-js");
   let todDateEl = document.querySelector(".todo-date-js");
 
@@ -74,19 +80,24 @@ function renderTodoList() {
   todoListObj.forEach((todo) => {
     let { name, dueDate } = todo;
     html += `
-          <div class="todo-row">
-          <div>${name}</div>
-          <div>${dueDate}</div>
-          <button class="delete-todo-button" onclick="deleteTodo(
-          ${i}
-          )">Delete</button>
-      </div>`;
+    <div class="todo-row">
+    <div>${name}</div>
+    <div>${dueDate}</div>
+    <button class="delete-todo-button btn-delete-todo-js">Delete</button>
+    </div>`;
   });
   todoListEl.innerHTML = html;
+  const btnDeleteTodo = document.querySelectorAll(".btn-delete-todo-js");
+
+  btnDeleteTodo.forEach((btnDelete, index) => {
+    btnDelete.addEventListener("click", () => {
+      deleteTodo(index);
+    });
+  });
 }
 
-function deleteTodo(i) {
-  todoListObj.splice(i, 1);
+function deleteTodo(index) {
+  todoListObj.splice(index, 1);
   localStorage.setItem("todo-list", JSON.stringify(todoListObj));
   console.log("deleted!");
   renderTodoList();

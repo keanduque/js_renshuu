@@ -70,6 +70,7 @@ input {
 body.rps-container {
   background-color: #8b1d0b;
   color: #ffffff;
+  max-width: 400px;
 }
 
 .btn-rps {
@@ -109,6 +110,26 @@ body.rps-container {
 
 .move-icon {
   font-size: 50px;
+}
+
+button.btn-rps:active {
+  background: #ff0000;
+}
+
+.btn-active {
+  background-color: #ff0000;
+}
+
+.confirmation-reset-style {
+  background-color: #181818;
+  margin-top: 5px;
+  padding: 5px;
+  display: none;
+}
+.confirmation-reset-style button {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 0;
 }
 
 /*** Calculator ****/

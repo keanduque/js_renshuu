@@ -9,18 +9,19 @@
   <body class="rps-container">
     <button onclick="history.back();" class="go-back">👈Go Back</button>
     <h1>Rock Paper Scissors</h1>
-    <button onclick="playGame('rock');" class="btn-rps">&#x270A;</button>
-    <button onclick="playGame('paper');" class="btn-rps">&#x270B;</button>
-    <button onclick="playGame('scissors');" class="btn-rps">&#x270C;</button>
+    <button class="btn-rps js-rock-btn">&#x270A;</button>
+    <button class="btn-rps js-paper-btn">&#x270B;</button>
+    <button class="btn-rps js-scissors-btn">&#x270C;</button>
     <p class="js-result"></p>
     <p class="js-moves"></p>
     <p class="js-score"></p>
-    <button onclick="resetScore();" class="command-btns reset-score-btn">
-      Reset Score
-    </button>
-    <button onclick="autoPlay();" class="command-btns auto-play-btn">
-      Auto Play
-    </button>
+    <button class="command-btns reset-score-btn">Reset Score</button>
+    <button class="command-btns auto-play-btn">Auto Play</button>
+    <div class="confirmation-reset-style confirmation-reset-js">
+      Are you sure you want to reset the score?
+      <button class="btn-confirm-yes">Yes</button>
+      <button class="btn-confirm-no">No</button>
+    </div>
     <p class="js-reset"></p>
     <script src="../js/script-rps.js"></script>
   </body>

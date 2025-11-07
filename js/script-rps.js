@@ -3,13 +3,97 @@ let score = JSON.parse(localStorage.getItem("score")) || {
   losses: 0,
   ties: 0,
 };
+let isReset = false;
+let isScoreEmpty = false;
+let autoPlayIntervalId;
+let isAutoPlay = false;
+let autoPlayBtnEl = document.querySelector(".auto-play-btn");
+let resetScoreBtnEl = document.querySelector(".reset-score-btn");
+
+let confirmationMsgEl = document.querySelector(".confirmation-reset-js");
+let btnConfirmYes = document.querySelector(".btn-confirm-yes");
+let btnConfirmNo = document.querySelector(".btn-confirm-no");
+
 // rock: &#x270A; paper: &#x270B; scissors: &#x270C;
 let emojiIcon = "";
-let scoreEl = document.querySelector(".js-score");
-updateScoreEl();
 const resultEl = document.querySelector(".js-result");
 const movesEl = document.querySelector(".js-moves");
+updateScoreEl();
 
+let rockBtn = document.querySelector(".js-rock-btn");
+let paperBtn = document.querySelector(".js-paper-btn");
+let scissorsBtn = document.querySelector(".js-scissors-btn");
+
+const resetEl = document.querySelector(".js-reset");
+
+// event listeners
+rockBtn.addEventListener("click", () => {
+  playGame("rock");
+});
+paperBtn.addEventListener("click", () => {
+  playGame("paper");
+});
+scissorsBtn.addEventListener("click", () => {
+  playGame("scissors");
+});
+
+autoPlayBtnEl.addEventListener("click", () => {
+  autoPlay();
+});
+resetScoreBtnEl.addEventListener("click", () => {
+  if (!isScoreEmpty) {
+    console.log(isScoreEmpty);
+    isReset = true;
+    confirmationMessagePopup();
+    isScoreEmpty = false;
+  } else {
+    resetEl.textContent = "No Score Available";
+    setTimeout(() => (resetEl.textContent = ""), 500);
+  }
+});
+
+// methods
+function playGame(userSelection) {
+  const computerMove = pickComputerMove();
+  const computerEmoji = convertToEmoji(computerMove);
+  const userEmoji = convertToEmoji(userSelection);
+  const result = getResult(userSelection, computerMove);
+
+  resultEl.textContent = result;
+  movesEl.innerHTML = `You <span class="move-icon">${userEmoji}</span> VS  <span class="move-icon">${computerEmoji}</span> Computer`;
+  updateScoreEl();
+}
+
+// play the game with keyboard
+document.body.addEventListener("keydown", (e) => {
+  if (e.key === "r") {
+    playGame("rock");
+    rockBtn.classList.add("btn-active");
+    setTimeout(() => rockBtn.classList.remove("btn-active"), 200);
+  } else if (e.key === "p") {
+    playGame("paper");
+    paperBtn.classList.add("btn-active");
+    setTimeout(() => paperBtn.classList.remove("btn-active"), 200);
+  } else if (e.key === "s") {
+    playGame("scissors");
+    scissorsBtn.classList.add("btn-active");
+    setTimeout(() => scissorsBtn.classList.remove("btn-active"), 200);
+  } else if (e.key === "a") {
+    autoPlay();
+    autoPlayBtnEl.classList.add("btn-active");
+    setTimeout(() => autoPlayBtnEl.classList.remove("btn-active"), 200);
+  } else if (e.key === "Escape") {
+    stopAutoPlay();
+    autoPlayBtnEl.classList.add("btn-active");
+    setTimeout(() => autoPlayBtnEl.classList.remove("btn-active"), 200);
+  } else if (e.code === "Backspace") {
+    resetScore();
+    resetScoreBtnEl.classList.add("btn-active");
+    setTimeout(() => resetScoreBtnEl.classList.remove("btn-active"), 200);
+  }
+});
+
+// play with computer move
 function pickComputerMove() {
   const ranNum = Math.floor(Math.random() * 3) + 1;
   let computerMove = "";
@@ -46,13 +130,11 @@ function getResult(userSelection, computerMove) {
   return result;
 }
 
-let autoPlayIntervalId;
-let isAutoPlay = false;
-let autoPlayBtnEl = document.querySelector(".auto-play-btn");
 function autoPlay() {
+  isScoreEmpty = false;
   let afkMove = pickComputerMove();
   if (!isAutoPlay) {
-    autoPlayIntervalId = setInterval(function () {
+    autoPlayIntervalId = setInterval(() => {
       playGame(afkMove);
       autoPlayBtnEl.textContent = "Stop Play";
       autoPlayBtnEl.style = "background-color:red";
@@ -74,17 +156,6 @@ function stopAutoPlay() {
   }
 }
 
-function playGame(userSelection) {
-  const computerMove = pickComputerMove();
-  const computerEmoji = convertToEmoji(computerMove);
-  const userEmoji = convertToEmoji(userSelection);
-  const result = getResult(userSelection, computerMove);
-
-  resultEl.textContent = result;
-  movesEl.innerHTML = `You <span class="move-icon">${userEmoji}</span> VS  <span class="move-icon">${computerEmoji}</span> Computer`;
-  updateScoreEl();
-}
-
 function convertToEmoji(choices) {
   if (choices === "rock") {
     emojiIcon = "&#x270A;";
@@ -98,8 +169,6 @@ function convertToEmoji(choices) {
 }
 
 function resetScore() {
-  const resetEl = document.querySelector(".js-reset");
-  let isScoreEmpty = Object.entries(score).every((s) => s[1] <= 0);
   score.wins = 0;
   score.losses = 0;
   score.ties = 0;
@@ -110,10 +179,31 @@ function resetScore() {
 
   if (!isScoreEmpty) {
     resetEl.textContent = "Score reset.";
-    setTimeout(() => (resetEl.textContent = ""), 1000);
+    setTimeout(() => (resetEl.textContent = ""), 2000);
   }
 }
 
+function confirmationMessagePopup() {
+  stopAutoPlay();
+  if (isReset) {
+    confirmationMsgEl.style.display = "block";
+  } else {
+    confirmationMsgEl.style.display = "none";
+  }
+}
+
+btnConfirmYes.addEventListener("click", () => {
+  resetScore();
+  isReset = false;
+  setTimeout(() => confirmationMessagePopup(), 500);
+});
+
+btnConfirmNo.addEventListener("click", () => {
+  isReset = false;
+  setTimeout(() => confirmationMessagePopup(), 500);
+});
 function updateScoreEl() {
-  scoreEl.textContent = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+  isScoreEmpty = Object.entries(score).every((s) => s[1] <= 0);
+  let scoreEl = document.querySelector(".js-score");
+  scoreEl.innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 }
